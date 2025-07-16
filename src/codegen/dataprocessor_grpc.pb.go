@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Dataprocessor_SayHello_FullMethodName = "/dataprocessor.Dataprocessor/SayHello"
+	Dataprocessor_SayHello_FullMethodName    = "/dataprocessor.Dataprocessor/SayHello"
+	Dataprocessor_GetDBSchema_FullMethodName = "/dataprocessor.Dataprocessor/GetDBSchema"
 )
 
 // DataprocessorClient is the client API for Dataprocessor service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DataprocessorClient interface {
 	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
+	GetDBSchema(ctx context.Context, in *GetDBSchemaRequest, opts ...grpc.CallOption) (*GetDBSchemaResponse, error)
 }
 
 type dataprocessorClient struct {
@@ -47,11 +49,22 @@ func (c *dataprocessorClient) SayHello(ctx context.Context, in *HelloRequest, op
 	return out, nil
 }
 
+func (c *dataprocessorClient) GetDBSchema(ctx context.Context, in *GetDBSchemaRequest, opts ...grpc.CallOption) (*GetDBSchemaResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetDBSchemaResponse)
+	err := c.cc.Invoke(ctx, Dataprocessor_GetDBSchema_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DataprocessorServer is the server API for Dataprocessor service.
 // All implementations must embed UnimplementedDataprocessorServer
 // for forward compatibility.
 type DataprocessorServer interface {
 	SayHello(context.Context, *HelloRequest) (*HelloReply, error)
+	GetDBSchema(context.Context, *GetDBSchemaRequest) (*GetDBSchemaResponse, error)
 	mustEmbedUnimplementedDataprocessorServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedDataprocessorServer struct{}
 
 func (UnimplementedDataprocessorServer) SayHello(context.Context, *HelloRequest) (*HelloReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
+}
+func (UnimplementedDataprocessorServer) GetDBSchema(context.Context, *GetDBSchemaRequest) (*GetDBSchemaResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDBSchema not implemented")
 }
 func (UnimplementedDataprocessorServer) mustEmbedUnimplementedDataprocessorServer() {}
 func (UnimplementedDataprocessorServer) testEmbeddedByValue()                       {}
@@ -104,6 +120,24 @@ func _Dataprocessor_SayHello_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Dataprocessor_GetDBSchema_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetDBSchemaRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataprocessorServer).GetDBSchema(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Dataprocessor_GetDBSchema_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataprocessorServer).GetDBSchema(ctx, req.(*GetDBSchemaRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Dataprocessor_ServiceDesc is the grpc.ServiceDesc for Dataprocessor service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var Dataprocessor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SayHello",
 			Handler:    _Dataprocessor_SayHello_Handler,
+		},
+		{
+			MethodName: "GetDBSchema",
+			Handler:    _Dataprocessor_GetDBSchema_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

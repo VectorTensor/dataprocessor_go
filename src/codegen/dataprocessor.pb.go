@@ -21,6 +21,154 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type GetDBSchemaRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Tablename     string                 `protobuf:"bytes,1,opt,name=tablename,proto3" json:"tablename,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetDBSchemaRequest) Reset() {
+	*x = GetDBSchemaRequest{}
+	mi := &file_dataprocessor_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetDBSchemaRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDBSchemaRequest) ProtoMessage() {}
+
+func (x *GetDBSchemaRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_dataprocessor_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDBSchemaRequest.ProtoReflect.Descriptor instead.
+func (*GetDBSchemaRequest) Descriptor() ([]byte, []int) {
+	return file_dataprocessor_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *GetDBSchemaRequest) GetTablename() string {
+	if x != nil {
+		return x.Tablename
+	}
+	return ""
+}
+
+type GetDBSchemaResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Columns       []*ColumnInfo          `protobuf:"bytes,1,rep,name=columns,proto3" json:"columns,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetDBSchemaResponse) Reset() {
+	*x = GetDBSchemaResponse{}
+	mi := &file_dataprocessor_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetDBSchemaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDBSchemaResponse) ProtoMessage() {}
+
+func (x *GetDBSchemaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_dataprocessor_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDBSchemaResponse.ProtoReflect.Descriptor instead.
+func (*GetDBSchemaResponse) Descriptor() ([]byte, []int) {
+	return file_dataprocessor_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetDBSchemaResponse) GetColumns() []*ColumnInfo {
+	if x != nil {
+		return x.Columns
+	}
+	return nil
+}
+
+type ColumnInfo struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ColumnName    string                 `protobuf:"bytes,1,opt,name=columnName,proto3" json:"columnName,omitempty"`
+	DataType      string                 `protobuf:"bytes,2,opt,name=DataType,proto3" json:"DataType,omitempty"`
+	IsNullable    string                 `protobuf:"bytes,3,opt,name=IsNullable,proto3" json:"IsNullable,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ColumnInfo) Reset() {
+	*x = ColumnInfo{}
+	mi := &file_dataprocessor_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ColumnInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ColumnInfo) ProtoMessage() {}
+
+func (x *ColumnInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_dataprocessor_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ColumnInfo.ProtoReflect.Descriptor instead.
+func (*ColumnInfo) Descriptor() ([]byte, []int) {
+	return file_dataprocessor_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ColumnInfo) GetColumnName() string {
+	if x != nil {
+		return x.ColumnName
+	}
+	return ""
+}
+
+func (x *ColumnInfo) GetDataType() string {
+	if x != nil {
+		return x.DataType
+	}
+	return ""
+}
+
+func (x *ColumnInfo) GetIsNullable() string {
+	if x != nil {
+		return x.IsNullable
+	}
+	return ""
+}
+
 type HelloRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -30,7 +178,7 @@ type HelloRequest struct {
 
 func (x *HelloRequest) Reset() {
 	*x = HelloRequest{}
-	mi := &file_dataprocessor_proto_msgTypes[0]
+	mi := &file_dataprocessor_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +190,7 @@ func (x *HelloRequest) String() string {
 func (*HelloRequest) ProtoMessage() {}
 
 func (x *HelloRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_dataprocessor_proto_msgTypes[0]
+	mi := &file_dataprocessor_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -55,7 +203,7 @@ func (x *HelloRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HelloRequest.ProtoReflect.Descriptor instead.
 func (*HelloRequest) Descriptor() ([]byte, []int) {
-	return file_dataprocessor_proto_rawDescGZIP(), []int{0}
+	return file_dataprocessor_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *HelloRequest) GetName() string {
@@ -74,7 +222,7 @@ type HelloReply struct {
 
 func (x *HelloReply) Reset() {
 	*x = HelloReply{}
-	mi := &file_dataprocessor_proto_msgTypes[1]
+	mi := &file_dataprocessor_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +234,7 @@ func (x *HelloReply) String() string {
 func (*HelloReply) ProtoMessage() {}
 
 func (x *HelloReply) ProtoReflect() protoreflect.Message {
-	mi := &file_dataprocessor_proto_msgTypes[1]
+	mi := &file_dataprocessor_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +247,7 @@ func (x *HelloReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HelloReply.ProtoReflect.Descriptor instead.
 func (*HelloReply) Descriptor() ([]byte, []int) {
-	return file_dataprocessor_proto_rawDescGZIP(), []int{1}
+	return file_dataprocessor_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *HelloReply) GetMessage() string {
@@ -113,14 +261,28 @@ var File_dataprocessor_proto protoreflect.FileDescriptor
 
 const file_dataprocessor_proto_rawDesc = "" +
 	"\n" +
-	"\x13dataprocessor.proto\x12\rdataprocessor\"\"\n" +
+	"\x13dataprocessor.proto\x12\rdataprocessor\"2\n" +
+	"\x12GetDBSchemaRequest\x12\x1c\n" +
+	"\ttablename\x18\x01 \x01(\tR\ttablename\"J\n" +
+	"\x13GetDBSchemaResponse\x123\n" +
+	"\acolumns\x18\x01 \x03(\v2\x19.dataprocessor.ColumnInfoR\acolumns\"h\n" +
+	"\n" +
+	"ColumnInfo\x12\x1e\n" +
+	"\n" +
+	"columnName\x18\x01 \x01(\tR\n" +
+	"columnName\x12\x1a\n" +
+	"\bDataType\x18\x02 \x01(\tR\bDataType\x12\x1e\n" +
+	"\n" +
+	"IsNullable\x18\x03 \x01(\tR\n" +
+	"IsNullable\"\"\n" +
 	"\fHelloRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\"&\n" +
 	"\n" +
 	"HelloReply\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2U\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage2\xad\x01\n" +
 	"\rDataprocessor\x12D\n" +
-	"\bSayHello\x12\x1b.dataprocessor.HelloRequest\x1a\x19.dataprocessor.HelloReply\"\x00B\n" +
+	"\bSayHello\x12\x1b.dataprocessor.HelloRequest\x1a\x19.dataprocessor.HelloReply\"\x00\x12V\n" +
+	"\vGetDBSchema\x12!.dataprocessor.GetDBSchemaRequest\x1a\".dataprocessor.GetDBSchemaResponse\"\x00B\n" +
 	"Z\bcodegen/b\x06proto3"
 
 var (
@@ -135,19 +297,25 @@ func file_dataprocessor_proto_rawDescGZIP() []byte {
 	return file_dataprocessor_proto_rawDescData
 }
 
-var file_dataprocessor_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_dataprocessor_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_dataprocessor_proto_goTypes = []any{
-	(*HelloRequest)(nil), // 0: dataprocessor.HelloRequest
-	(*HelloReply)(nil),   // 1: dataprocessor.HelloReply
+	(*GetDBSchemaRequest)(nil),  // 0: dataprocessor.GetDBSchemaRequest
+	(*GetDBSchemaResponse)(nil), // 1: dataprocessor.GetDBSchemaResponse
+	(*ColumnInfo)(nil),          // 2: dataprocessor.ColumnInfo
+	(*HelloRequest)(nil),        // 3: dataprocessor.HelloRequest
+	(*HelloReply)(nil),          // 4: dataprocessor.HelloReply
 }
 var file_dataprocessor_proto_depIdxs = []int32{
-	0, // 0: dataprocessor.Dataprocessor.SayHello:input_type -> dataprocessor.HelloRequest
-	1, // 1: dataprocessor.Dataprocessor.SayHello:output_type -> dataprocessor.HelloReply
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	2, // 0: dataprocessor.GetDBSchemaResponse.columns:type_name -> dataprocessor.ColumnInfo
+	3, // 1: dataprocessor.Dataprocessor.SayHello:input_type -> dataprocessor.HelloRequest
+	0, // 2: dataprocessor.Dataprocessor.GetDBSchema:input_type -> dataprocessor.GetDBSchemaRequest
+	4, // 3: dataprocessor.Dataprocessor.SayHello:output_type -> dataprocessor.HelloReply
+	1, // 4: dataprocessor.Dataprocessor.GetDBSchema:output_type -> dataprocessor.GetDBSchemaResponse
+	3, // [3:5] is the sub-list for method output_type
+	1, // [1:3] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_dataprocessor_proto_init() }
@@ -161,7 +329,7 @@ func file_dataprocessor_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_dataprocessor_proto_rawDesc), len(file_dataprocessor_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

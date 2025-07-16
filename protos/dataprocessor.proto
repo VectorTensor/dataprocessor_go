@@ -7,6 +7,17 @@ option go_package = "codegen/";
 
 service Dataprocessor {
   rpc SayHello(HelloRequest) returns (HelloReply) {}
+  rpc GetDBSchema(GetDBSchemaRequest) returns (GetDBSchemaResponse) {}
+}
+
+message GetDBSchemaRequest { string tablename = 1; }
+
+message GetDBSchemaResponse { repeated ColumnInfo columns = 1; }
+
+message ColumnInfo {
+  string columnName = 1;
+  string DataType = 2;
+  string IsNullable = 3;
 }
 
 message HelloRequest { string name = 1; }

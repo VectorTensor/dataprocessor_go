@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"main/codegen"
@@ -9,21 +8,8 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+	"main/services"
 )
-
-type greeterServer struct {
-	codegen.UnimplementedDataprocessorServer
-}
-
-func (s *greeterServer) SayHello(ctx context.Context, req *codegen.HelloRequest) (*codegen.HelloReply, error) {
-
-	log.Printf("Receieved %s", req.GetName())
-
-	return &codegen.HelloReply{
-		Message: "Hello " + req.GetName(),
-	}, nil
-
-}
 
 func main() {
 
@@ -37,7 +23,7 @@ func main() {
 	s := grpc.NewServer()
 	reflection.Register(s)
 
-	codegen.RegisterDataprocessorServer(s, &greeterServer{})
+	codegen.RegisterDataprocessorServer(s, &services.DataProcessorServer{})
 
 	fmt.Println("gRPC server listening on :50051")
 	if err := s.Serve(lis); err != nil {
