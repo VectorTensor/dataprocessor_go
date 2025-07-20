@@ -257,6 +257,334 @@ func (x *HelloReply) GetMessage() string {
 	return ""
 }
 
+type GetTransformationSuggestionsResponse struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	FactTable      []*FactTable           `protobuf:"bytes,1,rep,name=fact_table,json=factTable,proto3" json:"fact_table,omitempty"`
+	DimensionTable []*DimensionTable      `protobuf:"bytes,2,rep,name=dimension_table,json=dimensionTable,proto3" json:"dimension_table,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetTransformationSuggestionsResponse) Reset() {
+	*x = GetTransformationSuggestionsResponse{}
+	mi := &file_dataprocessor_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTransformationSuggestionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTransformationSuggestionsResponse) ProtoMessage() {}
+
+func (x *GetTransformationSuggestionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_dataprocessor_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTransformationSuggestionsResponse.ProtoReflect.Descriptor instead.
+func (*GetTransformationSuggestionsResponse) Descriptor() ([]byte, []int) {
+	return file_dataprocessor_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetTransformationSuggestionsResponse) GetFactTable() []*FactTable {
+	if x != nil {
+		return x.FactTable
+	}
+	return nil
+}
+
+func (x *GetTransformationSuggestionsResponse) GetDimensionTable() []*DimensionTable {
+	if x != nil {
+		return x.DimensionTable
+	}
+	return nil
+}
+
+type ForeignKey struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Column        []string               `protobuf:"bytes,1,rep,name=column,proto3" json:"column,omitempty"`
+	References    *ForeignKey_Reference  `protobuf:"bytes,2,opt,name=references,proto3" json:"references,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ForeignKey) Reset() {
+	*x = ForeignKey{}
+	mi := &file_dataprocessor_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ForeignKey) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForeignKey) ProtoMessage() {}
+
+func (x *ForeignKey) ProtoReflect() protoreflect.Message {
+	mi := &file_dataprocessor_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForeignKey.ProtoReflect.Descriptor instead.
+func (*ForeignKey) Descriptor() ([]byte, []int) {
+	return file_dataprocessor_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ForeignKey) GetColumn() []string {
+	if x != nil {
+		return x.Column
+	}
+	return nil
+}
+
+func (x *ForeignKey) GetReferences() *ForeignKey_Reference {
+	if x != nil {
+		return x.References
+	}
+	return nil
+}
+
+type FactTable struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Columns       []*ColumnInfo          `protobuf:"bytes,2,rep,name=columns,proto3" json:"columns,omitempty"`
+	PrimaryKey    []string               `protobuf:"bytes,3,rep,name=primary_key,json=primaryKey,proto3" json:"primary_key,omitempty"`
+	ForeignKey    []*ForeignKey          `protobuf:"bytes,4,rep,name=foreign_key,json=foreignKey,proto3" json:"foreign_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FactTable) Reset() {
+	*x = FactTable{}
+	mi := &file_dataprocessor_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FactTable) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FactTable) ProtoMessage() {}
+
+func (x *FactTable) ProtoReflect() protoreflect.Message {
+	mi := &file_dataprocessor_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FactTable.ProtoReflect.Descriptor instead.
+func (*FactTable) Descriptor() ([]byte, []int) {
+	return file_dataprocessor_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *FactTable) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *FactTable) GetColumns() []*ColumnInfo {
+	if x != nil {
+		return x.Columns
+	}
+	return nil
+}
+
+func (x *FactTable) GetPrimaryKey() []string {
+	if x != nil {
+		return x.PrimaryKey
+	}
+	return nil
+}
+
+func (x *FactTable) GetForeignKey() []*ForeignKey {
+	if x != nil {
+		return x.ForeignKey
+	}
+	return nil
+}
+
+type DimensionTable struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Columns       []*ColumnInfo          `protobuf:"bytes,2,rep,name=columns,proto3" json:"columns,omitempty"`
+	Primany       []string               `protobuf:"bytes,3,rep,name=primany,proto3" json:"primany,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DimensionTable) Reset() {
+	*x = DimensionTable{}
+	mi := &file_dataprocessor_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DimensionTable) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DimensionTable) ProtoMessage() {}
+
+func (x *DimensionTable) ProtoReflect() protoreflect.Message {
+	mi := &file_dataprocessor_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DimensionTable.ProtoReflect.Descriptor instead.
+func (*DimensionTable) Descriptor() ([]byte, []int) {
+	return file_dataprocessor_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DimensionTable) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *DimensionTable) GetColumns() []*ColumnInfo {
+	if x != nil {
+		return x.Columns
+	}
+	return nil
+}
+
+func (x *DimensionTable) GetPrimany() []string {
+	if x != nil {
+		return x.Primany
+	}
+	return nil
+}
+
+type GetTransformationSuggestionsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	OrignalSchema *ColumnInfo            `protobuf:"bytes,1,opt,name=orignal_schema,json=orignalSchema,proto3" json:"orignal_schema,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTransformationSuggestionsRequest) Reset() {
+	*x = GetTransformationSuggestionsRequest{}
+	mi := &file_dataprocessor_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTransformationSuggestionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTransformationSuggestionsRequest) ProtoMessage() {}
+
+func (x *GetTransformationSuggestionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_dataprocessor_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTransformationSuggestionsRequest.ProtoReflect.Descriptor instead.
+func (*GetTransformationSuggestionsRequest) Descriptor() ([]byte, []int) {
+	return file_dataprocessor_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetTransformationSuggestionsRequest) GetOrignalSchema() *ColumnInfo {
+	if x != nil {
+		return x.OrignalSchema
+	}
+	return nil
+}
+
+type ForeignKey_Reference struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Table         string                 `protobuf:"bytes,1,opt,name=table,proto3" json:"table,omitempty"`
+	Column        []string               `protobuf:"bytes,2,rep,name=column,proto3" json:"column,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ForeignKey_Reference) Reset() {
+	*x = ForeignKey_Reference{}
+	mi := &file_dataprocessor_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ForeignKey_Reference) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForeignKey_Reference) ProtoMessage() {}
+
+func (x *ForeignKey_Reference) ProtoReflect() protoreflect.Message {
+	mi := &file_dataprocessor_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForeignKey_Reference.ProtoReflect.Descriptor instead.
+func (*ForeignKey_Reference) Descriptor() ([]byte, []int) {
+	return file_dataprocessor_proto_rawDescGZIP(), []int{6, 0}
+}
+
+func (x *ForeignKey_Reference) GetTable() string {
+	if x != nil {
+		return x.Table
+	}
+	return ""
+}
+
+func (x *ForeignKey_Reference) GetColumn() []string {
+	if x != nil {
+		return x.Column
+	}
+	return nil
+}
+
 var File_dataprocessor_proto protoreflect.FileDescriptor
 
 const file_dataprocessor_proto_rawDesc = "" +
@@ -279,10 +607,38 @@ const file_dataprocessor_proto_rawDesc = "" +
 	"\x04name\x18\x01 \x01(\tR\x04name\"&\n" +
 	"\n" +
 	"HelloReply\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2\xad\x01\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"\xa7\x01\n" +
+	"$GetTransformationSuggestionsResponse\x127\n" +
+	"\n" +
+	"fact_table\x18\x01 \x03(\v2\x18.dataprocessor.FactTableR\tfactTable\x12F\n" +
+	"\x0fdimension_table\x18\x02 \x03(\v2\x1d.dataprocessor.DimensionTableR\x0edimensionTable\"\xa4\x01\n" +
+	"\n" +
+	"ForeignKey\x12\x16\n" +
+	"\x06column\x18\x01 \x03(\tR\x06column\x12C\n" +
+	"\n" +
+	"references\x18\x02 \x01(\v2#.dataprocessor.ForeignKey.ReferenceR\n" +
+	"references\x1a9\n" +
+	"\tReference\x12\x14\n" +
+	"\x05table\x18\x01 \x01(\tR\x05table\x12\x16\n" +
+	"\x06column\x18\x02 \x03(\tR\x06column\"\xb1\x01\n" +
+	"\tFactTable\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x123\n" +
+	"\acolumns\x18\x02 \x03(\v2\x19.dataprocessor.ColumnInfoR\acolumns\x12\x1f\n" +
+	"\vprimary_key\x18\x03 \x03(\tR\n" +
+	"primaryKey\x12:\n" +
+	"\vforeign_key\x18\x04 \x03(\v2\x19.dataprocessor.ForeignKeyR\n" +
+	"foreignKey\"s\n" +
+	"\x0eDimensionTable\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x123\n" +
+	"\acolumns\x18\x02 \x03(\v2\x19.dataprocessor.ColumnInfoR\acolumns\x12\x18\n" +
+	"\aprimany\x18\x03 \x03(\tR\aprimany\"g\n" +
+	"#GetTransformationSuggestionsRequest\x12@\n" +
+	"\x0eorignal_schema\x18\x01 \x01(\v2\x19.dataprocessor.ColumnInfoR\rorignalSchema2\xad\x01\n" +
 	"\rDataprocessor\x12D\n" +
 	"\bSayHello\x12\x1b.dataprocessor.HelloRequest\x1a\x19.dataprocessor.HelloReply\"\x00\x12V\n" +
-	"\vGetDBSchema\x12!.dataprocessor.GetDBSchemaRequest\x1a\".dataprocessor.GetDBSchemaResponse\"\x00B\n" +
+	"\vGetDBSchema\x12!.dataprocessor.GetDBSchemaRequest\x1a\".dataprocessor.GetDBSchemaResponse\"\x002\x9d\x01\n" +
+	"\x0fCoreTransformer\x12\x89\x01\n" +
+	"\x1cGetTransformationSuggestions\x122.dataprocessor.GetTransformationSuggestionsRequest\x1a3.dataprocessor.GetTransformationSuggestionsResponse\"\x00B\n" +
 	"Z\bcodegen/b\x06proto3"
 
 var (
@@ -297,25 +653,40 @@ func file_dataprocessor_proto_rawDescGZIP() []byte {
 	return file_dataprocessor_proto_rawDescData
 }
 
-var file_dataprocessor_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_dataprocessor_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_dataprocessor_proto_goTypes = []any{
-	(*GetDBSchemaRequest)(nil),  // 0: dataprocessor.GetDBSchemaRequest
-	(*GetDBSchemaResponse)(nil), // 1: dataprocessor.GetDBSchemaResponse
-	(*ColumnInfo)(nil),          // 2: dataprocessor.ColumnInfo
-	(*HelloRequest)(nil),        // 3: dataprocessor.HelloRequest
-	(*HelloReply)(nil),          // 4: dataprocessor.HelloReply
+	(*GetDBSchemaRequest)(nil),                   // 0: dataprocessor.GetDBSchemaRequest
+	(*GetDBSchemaResponse)(nil),                  // 1: dataprocessor.GetDBSchemaResponse
+	(*ColumnInfo)(nil),                           // 2: dataprocessor.ColumnInfo
+	(*HelloRequest)(nil),                         // 3: dataprocessor.HelloRequest
+	(*HelloReply)(nil),                           // 4: dataprocessor.HelloReply
+	(*GetTransformationSuggestionsResponse)(nil), // 5: dataprocessor.GetTransformationSuggestionsResponse
+	(*ForeignKey)(nil),                           // 6: dataprocessor.ForeignKey
+	(*FactTable)(nil),                            // 7: dataprocessor.FactTable
+	(*DimensionTable)(nil),                       // 8: dataprocessor.DimensionTable
+	(*GetTransformationSuggestionsRequest)(nil),  // 9: dataprocessor.GetTransformationSuggestionsRequest
+	(*ForeignKey_Reference)(nil),                 // 10: dataprocessor.ForeignKey.Reference
 }
 var file_dataprocessor_proto_depIdxs = []int32{
-	2, // 0: dataprocessor.GetDBSchemaResponse.columns:type_name -> dataprocessor.ColumnInfo
-	3, // 1: dataprocessor.Dataprocessor.SayHello:input_type -> dataprocessor.HelloRequest
-	0, // 2: dataprocessor.Dataprocessor.GetDBSchema:input_type -> dataprocessor.GetDBSchemaRequest
-	4, // 3: dataprocessor.Dataprocessor.SayHello:output_type -> dataprocessor.HelloReply
-	1, // 4: dataprocessor.Dataprocessor.GetDBSchema:output_type -> dataprocessor.GetDBSchemaResponse
-	3, // [3:5] is the sub-list for method output_type
-	1, // [1:3] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	2,  // 0: dataprocessor.GetDBSchemaResponse.columns:type_name -> dataprocessor.ColumnInfo
+	7,  // 1: dataprocessor.GetTransformationSuggestionsResponse.fact_table:type_name -> dataprocessor.FactTable
+	8,  // 2: dataprocessor.GetTransformationSuggestionsResponse.dimension_table:type_name -> dataprocessor.DimensionTable
+	10, // 3: dataprocessor.ForeignKey.references:type_name -> dataprocessor.ForeignKey.Reference
+	2,  // 4: dataprocessor.FactTable.columns:type_name -> dataprocessor.ColumnInfo
+	6,  // 5: dataprocessor.FactTable.foreign_key:type_name -> dataprocessor.ForeignKey
+	2,  // 6: dataprocessor.DimensionTable.columns:type_name -> dataprocessor.ColumnInfo
+	2,  // 7: dataprocessor.GetTransformationSuggestionsRequest.orignal_schema:type_name -> dataprocessor.ColumnInfo
+	3,  // 8: dataprocessor.Dataprocessor.SayHello:input_type -> dataprocessor.HelloRequest
+	0,  // 9: dataprocessor.Dataprocessor.GetDBSchema:input_type -> dataprocessor.GetDBSchemaRequest
+	9,  // 10: dataprocessor.CoreTransformer.GetTransformationSuggestions:input_type -> dataprocessor.GetTransformationSuggestionsRequest
+	4,  // 11: dataprocessor.Dataprocessor.SayHello:output_type -> dataprocessor.HelloReply
+	1,  // 12: dataprocessor.Dataprocessor.GetDBSchema:output_type -> dataprocessor.GetDBSchemaResponse
+	5,  // 13: dataprocessor.CoreTransformer.GetTransformationSuggestions:output_type -> dataprocessor.GetTransformationSuggestionsResponse
+	11, // [11:14] is the sub-list for method output_type
+	8,  // [8:11] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_dataprocessor_proto_init() }
@@ -329,9 +700,9 @@ func file_dataprocessor_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_dataprocessor_proto_rawDesc), len(file_dataprocessor_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   11,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   2,
 		},
 		GoTypes:           file_dataprocessor_proto_goTypes,
 		DependencyIndexes: file_dataprocessor_proto_depIdxs,

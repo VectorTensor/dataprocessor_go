@@ -10,6 +10,11 @@ service Dataprocessor {
   rpc GetDBSchema(GetDBSchemaRequest) returns (GetDBSchemaResponse) {}
 }
 
+service CoreTransformer {
+  rpc GetTransformationSuggestions(GetTransformationSuggestionsRequest)
+      returns (GetTransformationSuggestionsResponse) {}
+}
+
 message GetDBSchemaRequest { string tablename = 1; }
 
 message GetDBSchemaResponse { repeated ColumnInfo columns = 1; }
@@ -23,3 +28,33 @@ message ColumnInfo {
 message HelloRequest { string name = 1; }
 
 message HelloReply { string message = 1; }
+
+message GetTransformationSuggestionsResponse {
+
+  repeated FactTable fact_table = 1;
+  repeated DimensionTable dimension_table = 2;
+}
+
+message ForeignKey {
+  repeated string column = 1;
+  message Reference {
+    string table = 1;
+    repeated string column = 2;
+  }
+  Reference references = 2;
+}
+
+message FactTable {
+  string name = 1;
+  repeated ColumnInfo columns = 2;
+  repeated string primary_key = 3;
+  repeated ForeignKey foreign_key = 4;
+}
+
+message DimensionTable {
+  string name = 1;
+  repeated ColumnInfo columns = 2;
+  repeated string primany = 3;
+}
+
+message GetTransformationSuggestionsRequest { ColumnInfo orignal_schema = 1; }

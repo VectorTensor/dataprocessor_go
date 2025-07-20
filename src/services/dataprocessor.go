@@ -27,8 +27,9 @@ func (s *DataProcessorServer) GetDBSchema(ctx context.Context, req *codegen.GetD
 	db := models.DbOrm{}
 
 	db.Initial()
+	table_name := req.Tablename
 
-	columns := db.GetSchema("job_seed_synthetic")
+	columns := db.GetSchema(table_name)
 
 	res := codegen.GetDBSchemaResponse{}
 
